@@ -1,4 +1,3 @@
-HTML
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -140,9 +139,8 @@ HTML
   .filters{display:flex; gap:8px; flex-wrap:wrap;}
   .chip{
     font-size:12.5px; padding:6px 14px; border-radius:999px; border:1px solid var(--border);
-    background:var(--card); cursor:pointer; color:var(--ink-soft);
+    background:var(--card); color:var(--ink-soft);
   }
-  .chip.active{background:var(--navy); border-color:var(--navy); color:#fff;}
 
   /* ---------- product grid ---------- */
   .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
@@ -151,14 +149,8 @@ HTML
     position:relative; cursor:pointer; transition:box-shadow .15s ease, transform .15s ease;
   }
   .p-card:hover{box-shadow:0 6px 18px rgba(31,42,68,.14); transform:translateY(-2px);}
-  .p-card::after{
-    content:""; position:absolute; top:16px; left:-6px; width:12px; height:12px;
-    background:var(--canvas); border:1px solid var(--border); border-radius:50%;
-  }
   .p-img{
-    height:340px; background:linear-gradient(135deg,#DCD4BA,#CBC2A2);
-    display:flex; align-items:center; justify-content:center; color:#8A8266; font-size:12px;
-    border-bottom:1px dashed var(--border);
+    height:380px; border-bottom:1px dashed var(--border);
   }
   .p-body{padding:14px 16px 16px;}
   .p-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;}
@@ -172,8 +164,6 @@ HTML
     padding:4px 9px; border-radius:999px;
   }
   .stock-badge.high{background:var(--ok-bg); color:var(--ok);}
-  .stock-badge.low{background:var(--warn-bg); color:var(--warn);}
-  .stock-badge.out{background:var(--danger-bg); color:var(--danger);}
   .p-foot{display:flex; justify-content:space-between; align-items:center; margin-top:12px;}
 
   /* ---------- features strip ---------- */
@@ -207,8 +197,8 @@ HTML
     display:flex; align-items:center; justify-content:center; color:var(--ink);
   }
   .modal-grid{display:grid; grid-template-columns:1fr 1fr; gap:0;}
-  .modal-img{background:linear-gradient(135deg,#DCD4BA,#CBC2A2); min-height:450px; display:flex; align-items:center; justify-content:center; color:#8A8266; font-size:13px;}
-  .modal-info{padding:26px;}
+  .modal-img{min-height:450px; display:flex; align-items:center; justify-content:center; color:#8A8266; font-size:13px;}
+  .modal-info { padding:26px; text-align: right; }
   .modal-info .p-code{font-size:22px;}
   .modal-info h3{margin:6px 0 4px; font-size:19px;}
   .modal-info .p-price{font-size:16px; margin-bottom:14px;}
@@ -247,7 +237,7 @@ HTML
   .drawer-body{flex:1; overflow:auto; padding:16px 20px;}
   .cart-item{display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--border); align-items:center;}
   .cart-item .thumb{width:48px; height:48px; border-radius:6px; background:linear-gradient(135deg,#DCD4BA,#CBC2A2); flex:none;}
-  .cart-item .info{flex:1;}
+  .cart-item .info{flex:1; text-align: right;}
   .cart-item .code{font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:600; color:var(--navy);}
   .cart-item .meta{font-size:11.5px; color:var(--ink-soft);}
   .cart-item .rm{background:none; border:none; color:var(--danger); cursor:pointer; font-size:12px;}
@@ -342,11 +332,67 @@ HTML
       <h2>الكتالوج الفعلي — كولكشن 2026</h2>
       <p>الأسعار والمخزون يظهروا كاملين بعد تفعيل حساب التاجر — الأرقام هنا لأغراض العرض.</p>
     </div>
-    <div class="filters">
-      <span class="chip active">الكل</span>
-    </div>
   </div>
-  <div class="grid" id="productGrid"></div>
+  
+  <!-- المنتجات مكتوبة هنا مباشرة في الـ HTML لضمان ظهورها المطلق -->
+  <div class="grid" id="productGrid">
+    
+    <!-- المنتج 1 -->
+    <div class="p-card" onclick="openModalById(0)">
+      <div class="p-img" style="background: url('https://i.ibb.co/pJGg23tD/5913531747796717291.jpg') center/top no-repeat; background-size: cover;"></div>
+      <div class="p-body">
+        <div class="p-top"><span class="p-code">BRAZIL-W</span><span class="p-cat">طقم صيفي</span></div>
+        <div class="p-name">طقم شورت صيفي ميلتون أبيض</div>
+        <div class="p-price">سعر الجملة: <b>290 جنيه</b></div>
+        <div class="p-foot"><span class="stock-badge high">متوفر — 15</span></div>
+      </div>
+    </div>
+
+    <!-- المنتج 2 -->
+    <div class="p-card" onclick="openModalById(1)">
+      <div class="p-img" style="background: url('https://i.ibb.co/v4gNsy2B/5913531747796717294.jpg') center/top no-repeat; background-size: cover;"></div>
+      <div class="p-body">
+        <div class="p-top"><span class="p-code">BRAZIL-B</span><span class="p-cat">طقم صيفي</span></div>
+        <div class="p-name">طقم شورت صيفي ميلتون أسود</div>
+        <div class="p-price">سعر الجملة: <b>290 جنيه</b></div>
+        <div class="p-foot"><span class="stock-badge high">متوفر — 22</span></div>
+      </div>
+    </div>
+
+    <!-- المنتج 3 -->
+    <div class="p-card" onclick="openModalById(2)">
+      <div class="p-img" style="background: url('https://i.ibb.co/b5fC5Hw3/5949507841271991704.jpg') center/top no-repeat; background-size: cover;"></div>
+      <div class="p-body">
+        <div class="p-top"><span class="p-code">BALMAIN-R</span><span class="p-cat">تيشرتات</span></div>
+        <div class="p-name">تيشرت بالمان أحمر سبيشال</div>
+        <div class="p-price">سعر الجملة: <b>240 جنيه</b></div>
+        <div class="p-foot"><span class="stock-badge high">متوفر — 18</span></div>
+      </div>
+    </div>
+
+    <!-- المنتج 4 -->
+    <div class="p-card" onclick="openModalById(3)">
+      <div class="p-img" style="background: url('https://i.ibb.co/fYbyKxXf/5949507841271991705.jpg') center/top no-repeat; background-size: cover;"></div>
+      <div class="p-body">
+        <div class="p-top"><span class="p-code">BALMAIN-B</span><span class="p-cat">تيشرتات</span></div>
+        <div class="p-name">تيشرت بالمان أسود عالي الجودة</div>
+        <div class="p-price">سعر الجملة: <b>240 جنيه</b></div>
+        <div class="p-foot"><span class="stock-badge high">متوفر — 12</span></div>
+      </div>
+    </div>
+
+    <!-- المنتج 5 -->
+    <div class="p-card" onclick="openModalById(4)">
+      <div class="p-img" style="background: url('https://i.ibb.co/v6Yg7Nn6/5949507841271991707.jpg') center/top no-repeat; background-size: cover;"></div>
+      <div class="p-body">
+        <div class="p-top"><span class="p-code">BALMAIN-TEXT</span><span class="p-cat">تيشرتات</span></div>
+        <div class="p-name">تيشرت بالمان مطبوع بالكامل</div>
+        <div class="p-price">سعر الجملة: <b>220 جنيه</b></div>
+        <div class="p-foot"><span class="stock-badge high">متوفر — 25</span></div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <section class="features" id="features">
@@ -356,12 +402,12 @@ HTML
       <div class="feat">
         <div class="n">01</div>
         <h3>مخزون لحظي</h3>
-        <p>كل كود له رصيد حقيقي في قاعدة بيانات، يتحدّث فوراً مع كل طلب — جرّب زرار "تجربة الطلب" فوق.</p>
+        <p>كل كود له رصيد حقيقي يتحدّث مع كل طلب يدوياً.</p>
       </div>
       <div class="feat">
         <div class="n">02</div>
         <h3>تحميل الصور بضغطة</h3>
-        <p>كل منتج له زرار تحميل ملف صور احترافي مضغوط، جاهز للنشر على الأونلاين ستور فوراً.</p>
+        <p>طلب ملف صور احترافي مضغوط، جاهز للنشر فوراً.</p>
       </div>
       <div class="feat">
         <div class="n">03</div>
@@ -375,7 +421,7 @@ HTML
 <footer id="contact" style="background:var(--canvas-2);">
   <div style="max-width:1180px;margin:0 auto;">
     MADOC CLUB — بيع بالجملة فقط لأصحاب المحلات والمتاجر الإلكترونية.<br>
-    واتساب المبيعات: <span id="footerPhone"></span> &nbsp;•&nbsp; القاهرة، مصر
+    واتساب المبيعات: <span id="footerPhone">01028855056</span> &nbsp;•&nbsp; القاهرة، مصر
   </div>
 </footer>
 
@@ -384,7 +430,7 @@ HTML
   <div class="modal">
     <button class="modal-close" id="modalClose"><i class="ti ti-x" aria-hidden="true"></i></button>
     <div class="modal-grid">
-      <div class="modal-img" id="modalImg">صورة الموديل</div>
+      <div class="modal-img" id="modalImg"></div>
       <div class="modal-info">
         <div class="p-code" id="mCode">BRAZIL</div>
         <h3 id="mName">قميص كتان صيفي</h3>
@@ -402,9 +448,7 @@ HTML
         </div>
         <div class="opt-row">
           <span class="opt-label">اللون</span>
-          <div class="opt-pills" id="mColors">
-            <div class="opt-pill sel">أوف وايت</div>
-          </div>
+          <div class="opt-pills" id="mColors"></div>
         </div>
 
         <div class="qty-row">
@@ -449,72 +493,36 @@ HTML
 const SALES_WHATSAPP = "201028855056"; 
 
 const products = [
-  {code:"BRAZIL-W", name:"طقم شورت صيفي ميلتون أبيض", cat:"طقم صيفي", price:290, stock:15, max:20, colors:["أبيض", "لبني"], img:"https://i.ibb.co/pJGg23tD/5913531747796717291.jpg"},
-  {code:"BRAZIL-B", name:"طقم شورت صيفي ميلتون أسود", cat:"طقم صيفي", price:290, stock:22, max:30, colors:["أسود", "بينك"], img:"https://i.ibb.co/v4gNsy2B/5913531747796717294.jpg"},
-  {code:"BALMAIN-R", name:"تيشرت بالمان أحمر سبيشال", cat:"تيشرتات", price:240, stock:18, max:25, colors:["أحمر × أبيض"], img:"https://i.ibb.co/b5fC5Hw3/5949507841271991704.jpg"},
-  {code:"BALMAIN-B", name:"تيشرت بالمان أسود عالي الجودة", cat:"تيشرتات", price:240, stock:12, max:20, colors:["أسود × أبيض"], img:"https://i.ibb.co/fYbyKxXf/5949507841271991705.jpg"},
-  {code:"BALMAIN-TEXT", name:"تيشرت بالمان مطبوع بالكامل", cat:"تيشرتات", price:220, stock:25, max:30, colors:["أسود خط أبيض"], img:"https://i.ibb.co/v6Yg7Nn6/5949507841271991707.jpg"}
+  {code:"BRAZIL-W", name:"طقم شورت صيفي ميلتون أبيض", cat:"طقم صيفي", price:290, stock:15, colors:["أبيض", "لبني"], img:"https://i.ibb.co/pJGg23tD/5913531747796717291.jpg"},
+  {code:"BRAZIL-B", name:"طقم شورت صيفي ميلتون أسود", cat:"طقم صيفي", price:290, stock:22, colors:["أسود", "بينك"], img:"https://i.ibb.co/v4gNsy2B/5913531747796717294.jpg"},
+  {code:"BALMAIN-R", name:"تيشرت بالمان أحمر سبيشال", cat:"تيشرتات", price:240, stock:18, colors:["أحمر × أبيض"], img:"https://i.ibb.co/b5fC5Hw3/5949507841271991704.jpg"},
+  {code:"BALMAIN-B", name:"تيشرت بالمان أسود عالي الجودة", cat:"تيشرتات", price:240, stock:12, colors:["أسود × أبيض"], img:"https://i.ibb.co/fYbyKxXf/5949507841271991705.jpg"},
+  {code:"BALMAIN-TEXT", name:"تيشرت بالمان مطبوع بالكامل", cat:"تيشرتات", price:220, stock:25, colors:["أسود خط أبيض"], img:"https://i.ibb.co/v6Yg7Nn6/5949507841271991707.jpg"}
 ];
 
 let cart = [];
 let activeProduct = null;
 let qty = 1;
 
-function stockClass(s){ if(s===0) return "out"; if(s<=8) return "low"; return "high"; }
-function stockLabel(s){ if(s===0) return "غير متوفر"; if(s<=8) return "كمية محدودة — " + s; return "متوفر — " + s; }
-
-function renderGrid(){
-  const grid = document.getElementById('productGrid');
-  if(!grid) return;
-  grid.innerHTML = products.map((p,i)=>`
-    <div class="p-card" data-i="${i}">
-      <div class="p-img" style="background: url('${p.img || ''}') center/top no-repeat; background-size: cover; color: transparent;">صورة ${p.code}</div>
-      <div class="p-body">
-        <div class="p-top">
-          <span class="p-code">${p.code}</span>
-          <span class="p-cat">${p.cat}</span>
-        </div>
-        <div class="p-name">${p.name}</div>
-        <div class="p-price">سعر الجملة: <b>${p.price} جنيه</b></div>
-        <div class="p-foot">
-          <span class="stock-badge ${stockClass(p.stock)}">${stockLabel(p.stock)}</span>
-        </div>
-      </div>
-    </div>`).join('');
-  grid.querySelectorAll('.p-card').forEach(el=>{
-    el.addEventListener('click', ()=> openModal(products[el.dataset.i]));
-  });
-}
-
-function openModal(p){
+function openModalById(index){
+  const p = products[index];
   activeProduct = p; qty = 1;
   document.getElementById('mCode').textContent = p.code;
   document.getElementById('mName').textContent = p.name;
   document.getElementById('mPrice').innerHTML = `سعر الجملة: <b>${p.price} جنيه</b> / القطعة`;
-  document.getElementById('mStockBadge').innerHTML = `<span class="stock-badge ${stockClass(p.stock)}">${stockLabel(p.stock)}</span>`;
+  document.getElementById('mStockBadge').innerHTML = `<span class="stock-badge high">متوفر — ${p.stock}</span>`;
+  document.getElementById('modalImg').style.background = `url('${p.img}') center/top no-repeat`;
+  document.getElementById('modalImg').style.backgroundSize = 'cover';
   
-  if(p.img) {
-    document.getElementById('modalImg').style.background = `url('${p.img}') center/top no-repeat`;
-    document.getElementById('modalImg').style.backgroundSize = 'cover';
-    document.getElementById('modalImg').textContent = '';
-  } else {
-    document.getElementById('modalImg').style.background = `linear-gradient(135deg,#DCD4BA,#CBC2A2)`;
-    document.getElementById('modalImg').textContent = "صورة " + p.code;
-  }
-
   const colorsContainer = document.getElementById('mColors');
-  if(colorsContainer && p.colors) {
-    colorsContainer.innerHTML = p.colors.map((c, idx) => `<div class="opt-pill ${idx === 0 ? 'sel' : ''}">${c}</div>`).join('');
-  }
+  colorsContainer.innerHTML = p.colors.map((c, idx) => `<div class="opt-pill ${idx === 0 ? 'sel' : ''}">${c}</div>`).join('');
   
   document.getElementById('qtyVal').textContent = qty;
   document.getElementById('addToCartBtn').disabled = p.stock === 0;
-  document.getElementById('addToCartBtn').style.opacity = p.stock === 0 ? .5 : 1;
   document.getElementById('overlay').classList.add('show');
 }
-document.getElementById('modalClose').onclick = ()=> document.getElementById('overlay').classList.remove('show');
-document.getElementById('overlay').addEventListener('click', e=>{ if(e.target.id==='overlay') e.currentTarget.classList.remove('show'); });
 
+document.getElementById('modalClose').onclick = ()=> document.getElementById('overlay').classList.remove('show');
 document.getElementById('qtyMinus').onclick = ()=>{ if(qty>1) qty--; document.getElementById('qtyVal').textContent = qty; };
 document.getElementById('qtyPlus').onclick = ()=>{ if(qty < activeProduct.stock) qty++; document.getElementById('qtyVal').textContent = qty; };
 
@@ -522,50 +530,32 @@ function showToast(msg){
   const t = document.getElementById('toast');
   document.getElementById('toastMsg').textContent = msg;
   t.classList.add('show');
-  clearTimeout(window._toastTimer);
-  window._toastTimer = setTimeout(()=> t.classList.remove('show'), 2600);
+  setTimeout(()=> t.classList.remove('show'), 2600);
 }
 
-document.getElementById('downloadBtn').onclick = ()=>{
-  const msg = `عايز صور موديل ${activeProduct.code} (${activeProduct.name}) بجودة عالية لاستخدامها في متجري`;
-  const url = `https://wa.me/${SALES_WHATSAPP}?text=${encodeURIComponent(msg)}`;
-  window.open(url, '_blank');
-  showToast('جاري فتح واتساب لطلب صور الموديل مباشرة');
-};
-
 document.getElementById('addToCartBtn').onclick = ()=>{
-  if(activeProduct.stock === 0) return;
   const existing = cart.find(c=>c.code===activeProduct.code);
   if(existing){ existing.qty += qty; } else { cart.push({code:activeProduct.code, name:activeProduct.name, price:activeProduct.price, qty}); }
-  activeProduct.stock = Math.max(0, activeProduct.stock - qty);
-  renderGrid();
   renderCart();
   document.getElementById('overlay').classList.remove('show');
-  showToast(`تمت إضافة ${qty} سيريه من ${activeProduct.code} للسلة`);
+  showToast(`تمت إضافة ${qty} سيريه للسلة`);
 };
 
 function renderCart(){
-  const count = cart.reduce((s,c)=>s+c.qty,0);
-  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartCount').textContent = cart.reduce((s,c)=>s+c.qty,0);
   const body = document.getElementById('drawerBody');
   if(cart.length===0){
-    body.innerHTML = `<div class="empty-cart">لسه مفيش أصناف مضافة.<br>افتح أي منتج من الكتالوج وجرّب تضيفه.</div>`;
+    body.innerHTML = `<div class="empty-cart">لسه مفيش أصناف مضافة.</div>`;
   } else {
     body.innerHTML = cart.map((c,i)=>`
       <div class="cart-item">
-        <div class="thumb"></div>
         <div class="info">
           <div class="code">${c.code}</div>
           <div class="meta">${c.name} — ${c.qty} سيريه × ${c.price} جنيه</div>
         </div>
-        <button class="rm" data-i="${i}">إزالة</button>
       </div>`).join('');
-    body.querySelectorAll('.rm').forEach(btn=>{
-      btn.onclick = ()=>{ cart.splice(btn.dataset.i,1); renderCart(); document.getElementById('waPreview').classList.remove('show'); };
-    });
   }
-  const total = cart.reduce((s,c)=>s+c.qty*c.price,0);
-  document.getElementById('cartTotal').textContent = total.toLocaleString('en-US') + " جنيه";
+  document.getElementById('cartTotal').textContent = cart.reduce((s,c)=>s+c.qty*c.price,0).toLocaleString() + " جنيه";
 }
 
 document.getElementById('cartOpenBtn').onclick = ()=>{
@@ -580,45 +570,27 @@ document.getElementById('drawerClose').onclick = closeDrawer;
 document.getElementById('drawerOverlay').onclick = closeDrawer;
 
 document.getElementById('sendOrderBtn').onclick = ()=>{
-  if(cart.length===0){ showToast('السلة فاضية — ضيف صنف الأول'); return; }
+  if(cart.length===0) return;
   const total = cart.reduce((s,c)=>s+c.qty*c.price,0);
-  const orderId = 'MC-' + Math.floor(1000+Math.random()*9000);
-  const lines = cart.map(c=> `${c.code} x ${c.qty} سيريه (${c.name})`).join('\n');
-  const msg = `طلب جديد ${orderId} من موقع MADOC CLUB\n${lines}\nالإجمالي: ${total} جنيه\nاسم المحل: \nرقم الموبايل: \nطريقة الاستلام: `;
-  document.getElementById('waPreview').textContent = msg;
-  document.getElementById('waPreview').classList.add('show');
-  const url = `https://wa.me/${SALES_WHATSAPP}?text=${encodeURIComponent(msg)}`;
-  window.open(url, '_blank');
-  showToast(`جاري فتح واتساب لإرسال الطلب ${orderId}`);
+  const lines = cart.map(c=> `${c.code} x ${c.qty} سيريه`).join('\n');
+  const msg = `طلب جديد من موقع MADOC CLUB\n\n${lines}\n\nالإجمالي: ${total} جنيه`;
+  window.open(`https://wa.me/${SALES_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
 document.getElementById('demoOrderBtn').onclick = ()=>{
-  const stockEl = document.getElementById('stockNum');
-  let current = parseInt(stockEl.textContent,10);
-  if(current < 5){ showToast('الكمية المطلوبة أكبر من المتاح'); return; }
-  current -= 5;
-  stockEl.textContent = current;
-  stockEl.classList.add('stock-flash');
-  setTimeout(()=> stockEl.classList.remove('stock-flash'), 500);
-  document.getElementById('stockBar').style.width = (current/20*100)+'%';
-  if(current===0){ document.getElementById('stockBar').style.background = 'var(--danger)'; }
-  else if(current<=8){ document.getElementById('stockBar').style.background = 'var(--warn)'; }
-  showToast('تم تحديث المخزون لحظياً لكل الزوار: 20 → ' + current);
+  let current = parseInt(document.getElementById('stockNum').textContent,10);
+  if(current >= 5) {
+    current -= 5;
+    document.getElementById('stockNum').textContent = current;
+    document.getElementById('stockBar').style.width = (current/20*100)+'%';
+    showToast('تمت تجربة الخصم بنجاح');
+  }
 };
 document.getElementById('demoResetBtn').onclick = ()=>{
   document.getElementById('stockNum').textContent = 20;
   document.getElementById('stockBar').style.width = '100%';
-  document.getElementById('stockBar').style.background = 'var(--ok)';
 };
-
-document.getElementById('loginBtn').onclick = ()=> showToast('نموذج تسجيل دخول التاجر يُفعَّل بعد الربط بقاعدة البيانات');
-
-// تشغيل عند التحميل
-window.onload = function() {
-  renderGrid();
-  renderCart();
-  document.getElementById('footerPhone').textContent = SALES_WHATSAPP.replace(/^20/,'0');
-};
+document.getElementById('downloadBtn').onclick = ()=> showToast('جاري تحضير ملف الصور المفتوحة');
 </script>
 </body>
 </html>
