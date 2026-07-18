@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MADOC CLUB — نموذج تجريبي للموقع</title>
+<title>MADOC CLUB — الكولكشن الرسمي</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Oswald:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
@@ -155,7 +155,7 @@
     background:var(--canvas); border:1px solid var(--border); border-radius:50%;
   }
   .p-img{
-    height:190px; background:linear-gradient(135deg,#DCD4BA,#CBC2A2);
+    height:320px; background:linear-gradient(135deg,#DCD4BA,#CBC2A2);
     display:flex; align-items:center; justify-content:center; color:#8A8266; font-size:12px;
     border-bottom:1px dashed var(--border);
   }
@@ -206,7 +206,7 @@
     display:flex; align-items:center; justify-content:center; color:var(--ink);
   }
   .modal-grid{display:grid; grid-template-columns:1fr 1fr; gap:0;}
-  .modal-img{background:linear-gradient(135deg,#DCD4BA,#CBC2A2); min-height:320px; display:flex; align-items:center; justify-content:center; color:#8A8266; font-size:13px;}
+  .modal-img{background:linear-gradient(135deg,#DCD4BA,#CBC2A2); min-height:450px; display:flex; align-items:center; justify-content:center; color:#8A8266; font-size:13px;}
   .modal-info{padding:26px;}
   .modal-info .p-code{font-size:22px;}
   .modal-info h3{margin:6px 0 4px; font-size:19px;}
@@ -265,7 +265,7 @@
     .feat-grid{grid-template-columns:1fr;}
     nav{display:none;}
     .modal-grid{grid-template-columns:1fr;}
-    .modal-img{min-height:200px;}
+    .modal-img{min-height:300px;}
   }
   @media(max-width:560px){
     .grid{grid-template-columns:1fr;}
@@ -287,11 +287,9 @@
     <nav>
       <a href="#catalog">الكتالوج</a>
       <a href="#features">مميزات الموقع</a>
-      <a href="#register">تسجيل تاجر</a>
       <a href="#contact">تواصل معنا</a>
     </nav>
     <div class="header-actions">
-      <button class="btn btn-outline" id="loginBtn"><i class="ti ti-user" aria-hidden="true"></i>دخول تاجر</button>
       <div class="cart-pill" id="cartOpenBtn">
         <i class="ti ti-shopping-bag" aria-hidden="true"></i>
         <span>سلة الطلب</span>
@@ -308,7 +306,6 @@
     <p>موقع خاص بأصحاب المحلات والمتاجر الإلكترونية: أرصدة حقيقية لحظة بلحظة، صور احترافية جاهزة للتحميل، وطلب يوصل لفريق المبيعات على واتساب في نفس الثانية.</p>
     <div class="hero-actions">
       <button class="btn btn-primary" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})"><i class="ti ti-shirt" aria-hidden="true"></i>تصفّح الكتالوج</button>
-      <button class="btn btn-ghost" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">إزاي بيشتغل الموقع</button>
     </div>
     <div class="trust-row">
       <div><b>+120</b>محل شريك</div>
@@ -341,14 +338,14 @@
 <section class="block" id="catalog">
   <div class="section-head">
     <div>
-      <h2>الكتالوج</h2>
+      <h2>الكتالوج الفعلي — كولكشن 2026</h2>
       <p>الأسعار والمخزون يظهروا كاملين بعد تفعيل حساب التاجر — الأرقام هنا لأغراض العرض.</p>
     </div>
     <div class="filters">
       <span class="chip active">الكل</span>
+      <span class="chip">طقم صيفي</span>
       <span class="chip">قمصان</span>
-      <span class="chip">بناطيل</span>
-      <span class="chip">تراكسوت</span>
+      <span class="chip">تيشرتات</span>
     </div>
   </div>
   <div class="grid" id="productGrid"></div>
@@ -407,10 +404,8 @@
         </div>
         <div class="opt-row">
           <span class="opt-label">اللون</span>
-          <div class="opt-pills">
+          <div class="opt-pills" id="mColors">
             <div class="opt-pill sel">أوف وايت</div>
-            <div class="opt-pill">كحلي</div>
-            <div class="opt-pill">بيج</div>
           </div>
         </div>
 
@@ -453,25 +448,14 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
 <script>
-/* ================================================================
-   لوحة التحكم اليدوية — عدّل هنا فقط، من غير ما تلمس أي حاجة تانية
-   ================================================================
-   1) رقم الواتساب اللي هتوصله الطلبات (بصيغة دولية بدون + وبدون صفر البداية)
-      مثال: لو الرقم 01012345678 يبقى تكتبه هنا 201012345678
-   2) قائمة المنتجات: كل منتج له كود، اسم، تصنيف، سعر، والكمية المتاحة (stock).
-      لما تبيع أو يوصلك إنتاج جديد، غيّر رقم stock يدوياً وارفع الملف تاني.
-      ملحوظة: التحديث هنا مش لحظي/مشترك بين الزوار زي اللي هيعمله المطور -
-      المتصفح بيقرأ الرقم اللي إنت كتبته وقت آخر رفع للملف فقط.
-   ================================================================ */
-const SALES_WHATSAPP = "201028855056"; // رقم واتساب المبيعات
+const SALES_WHATSAPP = "201028855056"; 
 
 const products = [
-  {code:"BRAZIL", name:"قميص كتان صيفي", cat:"قمصان", price:210, stock:20, max:20},
-  {code:"MILAN",  name:"بنطلون قماش كلاسيك", cat:"بناطيل", price:260, stock:8,  max:20},
-  {code:"OSAKA",  name:"تراكسوت رياضي", cat:"تراكسوت", price:390, stock:0,  max:20},
-  {code:"CAIRO",  name:"قميص دينيم", cat:"قمصان", price:230, stock:14, max:20},
-  {code:"LISBON", name:"بنطلون شينو", cat:"بناطيل", price:245, stock:5,  max:20},
-  {code:"TOKYO",  name:"جاكيت خفيف", cat:"تراكسوت", price:410, stock:11, max:20},
+  {code:"BRAZIL-W", name:"طقم شورت صيفي ميلتون", cat:"طقم صيفي", price:290, stock:15, max:20, colors:["أبيض", "لبني"], img:"https://i.ibb.co/pJGg23tD/5913531747796717291.jpg"},
+  {code:"BRAZIL-B", name:"طقم شورت صيفي ميلتون أسود", cat:"طقم صيفي", price:290, stock:22, max:30, colors:["أسود", "بينك"], img:"https://i.ibb.co/v4gNsy2B/5913531747796717294.jpg"},
+  {code:"BALMAIN-R", name:"تيشرت بالمان أحمر سبيشال", cat:"تيشرتات", price:240, stock:18, max:25, colors:["أحمر × أبيض"], img:"https://i.ibb.co/b5fC5Hw3/5949507841271991704.jpg"},
+  {code:"BALMAIN-B", name:"تيشرت بالمان أسود عالي الجودة", cat:"تيشرتات", price:240, stock:12, max:20, colors:["أسود × أبيض"], img:"https://i.ibb.co/fYbyKxXf/5949507841271991705.jpg"},
+  {code:"BALMAIN-TEXT", name:"تيشرت بالمان مطبوع بالكامل", cat:"تيشرتات", price:220, stock:25, max:30, colors:["أسود خط أبيض"], img:"https://i.ibb.co/v6Yg7Nn6/5949507841271991707.jpg"}
 ];
 
 let cart = [];
@@ -485,7 +469,7 @@ function renderGrid(){
   const grid = document.getElementById('productGrid');
   grid.innerHTML = products.map((p,i)=>`
     <div class="p-card" data-i="${i}">
-      <div class="p-img">صورة ${p.code}</div>
+      <div class="p-img" style="background: url('${p.img || ''}') center/top no-repeat; background-size: cover; color: transparent;">صورة ${p.code}</div>
       <div class="p-body">
         <div class="p-top">
           <span class="p-code">${p.code}</span>
@@ -509,7 +493,19 @@ function openModal(p){
   document.getElementById('mName').textContent = p.name;
   document.getElementById('mPrice').innerHTML = `سعر الجملة: <b>${p.price} جنيه</b> / القطعة`;
   document.getElementById('mStockBadge').innerHTML = `<span class="stock-badge ${stockClass(p.stock)}">${stockLabel(p.stock)}</span>`;
-  document.getElementById('modalImg').textContent = "صورة " + p.code;
+  
+  if(p.img) {
+    document.getElementById('modalImg').style.background = `url('${p.img}') center/top no-repeat`;
+    document.getElementById('modalImg').style.backgroundSize = 'cover';
+    document.getElementById('modalImg').textContent = '';
+  } else {
+    document.getElementById('modalImg').style.background = `linear-gradient(135deg,#DCD4BA,#CBC2A2)`;
+    document.getElementById('modalImg').textContent = "صورة " + p.code;
+  }
+
+  const colorsContainer = document.getElementById('mColors');
+  colorsContainer.innerHTML = p.colors.map((c, idx) => `<div class="opt-pill ${idx === 0 ? 'sel' : ''}">${c}</div>`).join('');
+  
   document.getElementById('qtyVal').textContent = qty;
   document.getElementById('addToCartBtn').disabled = p.stock === 0;
   document.getElementById('addToCartBtn').style.opacity = p.stock === 0 ? .5 : 1;
@@ -533,7 +529,7 @@ document.getElementById('downloadBtn').onclick = ()=>{
   const msg = `عايز صور موديل ${activeProduct.code} (${activeProduct.name}) بجودة عالية لاستخدامها في متجري`;
   const url = `https://wa.me/${SALES_WHATSAPP}?text=${encodeURIComponent(msg)}`;
   window.open(url, '_blank');
-  showToast('جاري فتح واتساب لطلب صور الموديل مباشرة (التحميل التلقائي هيتفعّل مع النسخة الكاملة)');
+  showToast('جاري فتح واتساب لطلب صور الموديل مباشرة');
 };
 
 document.getElementById('addToCartBtn').onclick = ()=>{
